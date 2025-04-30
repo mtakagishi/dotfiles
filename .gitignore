@@ -1,0 +1,76 @@
+# 0. dot status --untracked-files=all でまだ見えてしまうノイズを確認
+############################
+# 1. Security-sensitive
+############################
+# SSH / GPG / cloud creds
+.ssh/id_*
+.gnupg/
+.aws/
+.azure/
+.google_credentials.json
+# ただし設定だけは追跡
+!.ssh/config        # 接続エイリアス
+
+############################
+# 2. Cache & temp files
+############################
+.cache/
+.local/share/
+.local/state/
+npm-debug.log*
+node_modules/
+__pycache__/
+*.py[co]
+
+############################
+# 3. Editor swap / history
+############################
+.*.sw?
+*.un~
+.vscode-server/
+.zsh_history
+.bash_history
+.viminfo
+
+############################
+# 4. XDG runtime / GUI artefacts
+############################
+.config/monitors.xml
+.xauthority
+.DS_Store
+Thumbs.db
+
+############################
+# 5. Docker / Vagrant misc
+############################
+.docker/
+.vagrant/
+
+############################
+# 6. Allowlist for dotfiles you **do** want
+############################
+!*.zshrc
+!*.bashrc
+!*.gitconfig
+!.config/
+!.tmux.conf
+!.config/nvim/**        # Neovim 設定一式
+!.config/starship.toml
+!.gitignore
+
+############################
+# 7. Catch-all (何もマッチしなかった大きなディレクトリは未追跡)
+############################
+*.iso
+*.img
+############################
+# 8. 追加
+############################
+.bash_logout
+.lesshst
+.profile
+.ssh/authorized_keys
+.ssh/known_hosts
+.ssh/known_hosts.old
+.sudo_as_admin_successful
+.dotfiles/*
