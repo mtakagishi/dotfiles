@@ -55,7 +55,6 @@ Thumbs.db
 !.config/starship.toml
 !.gitignore
 !README.md
-!SETUP.md
 !.config/bootstrap/install.sh
 !.github/workflows/setup-test.yml
 

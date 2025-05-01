@@ -2,15 +2,15 @@
 
 # dotfiles
 
-## 新規環境立上げ時
+## SETUP
 
-1. 必要なパッケージのインストール
+1. install package
 
 ``` bash
 sudo apt update -y && sudo apt install -y git curl vim
 ```
 
-2. dotfiles の bare-repo 方式での管理
+2. checkout dotfiles
 
 ``` bash
 git clone --bare https://github.com/mtakagishi/dotfiles.git $HOME/.dotfiles \
@@ -19,7 +19,7 @@ git clone --bare https://github.com/mtakagishi/dotfiles.git $HOME/.dotfiles \
 config --local status.showUntrackedFiles no
 ``` 
 
-3. install.sh の実行
+3. run instal.sh
 
 ``` bash
 bash ~/.config/bootstrap/install.sh
