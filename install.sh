@@ -15,6 +15,7 @@ fi
 # ロケールと言語設定
 locale-gen ja_JP.UTF-8
 update-locale LANG=ja_JP.UTF-8
+source /etc/default/locale
 
 # タイムゾーン設定
 timedatectl set-timezone Asia/Tokyo
