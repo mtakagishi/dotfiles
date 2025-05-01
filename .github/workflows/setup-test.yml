@@ -1,4 +1,4 @@
-name: Dotfiles Setup CI
+name: Setup CI
 
 on:
   push:
