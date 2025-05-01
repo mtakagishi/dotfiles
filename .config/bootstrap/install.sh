@@ -42,3 +42,5 @@ echo -e "\ufb00 \ufb13 \ue0b0 \uf09b"
 
 # zsh設定
 chsh -s "$(command -v zsh)"
+echo 現在のシェル
+echo $SHELL
