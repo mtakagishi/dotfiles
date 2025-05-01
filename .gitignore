@@ -56,6 +56,8 @@ Thumbs.db
 !.gitignore
 !README.md
 !SETUP.md
+!.config/bootstrap/install.sh
+!.github/workflows/setup-test.yml
 
 ############################
 # 7. Catch-all (何もマッチしなかった大きなディレクトリは未追跡)

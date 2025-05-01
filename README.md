@@ -1,3 +1,5 @@
+![Dotfiles Setup](https://github.com/mtakagishi/dotfiles/actions/workflows/setup-test.yml/badge.svg)
+
 # dotfiles
 
 ## 新規環境立上げ時
