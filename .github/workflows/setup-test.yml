@@ -23,6 +23,9 @@ jobs:
             # 1) 必要なパッケージのインストール
             sudo apt update -y && sudo apt install -y git curl vim
 
+            # CI限定
+            rm -f $HOME/.bashrc
+
             # 2) dotfiles の bare-repo 方式での管理
             git clone --bare https://github.com/mtakagishi/dotfiles.git $HOME/.dotfiles
             git --git-dir=$HOME/.dotfiles --work-tree=$HOME checkout
