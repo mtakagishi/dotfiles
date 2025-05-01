@@ -33,7 +33,7 @@ ufw status verbose
 mkdir -p ~/.local/share/fonts
 cd ~/.local/share/fonts
 curl -LO https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCode.zip
-unzip FiraCode.zip
+unzip -o FiraCode.zip
 rm FiraCode.zip
 cd ~
 
@@ -41,4 +41,4 @@ echo font表示確認
 echo -e "\ufb00 \ufb13 \ue0b0 \uf09b"
 
 # zsh設定
-chsh -s $(command -v zsh)"
+chsh -s "$(command -v zsh)"
