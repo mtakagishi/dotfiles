@@ -51,13 +51,14 @@ Thumbs.db
 !*.zshrc
 !*.bashrc
 !*.gitconfig
-!.config/
-!.config/starship.toml
 !.gitignore
 !README.md
-!.config/bootstrap/install.sh
-!.github/workflows/setup-test.yml
+!.github/workflows/dotfiles-ci.yml
+!.config/
+!.config/starship.toml
 !.config/nvim/init.vim
+!.config/bootstrap/install.sh
+!.config/bootstrap/uninstall.sh
 
 ############################
 # 7. Catch-all (何もマッチしなかった大きなディレクトリは未追跡)
@@ -78,3 +79,4 @@ Thumbs.db
 .zcompdump
 install.log
 .nvimlog
+.emacs.d/eln-cache/

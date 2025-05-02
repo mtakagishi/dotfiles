@@ -27,6 +27,7 @@ packages=(
   fontconfig
   unzip
   neovim
+  # emacs-nox
 )
 
 echo ----------------------------------------
@@ -37,9 +38,24 @@ for pkg in "${packages[@]}"; do
     echo "[INFO] $pkg is already installed."
   else
     echo "[INFO] Installing $pkg..."
-    sudo apt-get install -y "$pkg"
+    # sudo apt-get install -y "$pkg"
+    sudo DEBIAN_FRONTEND=noninteractive apt-get install -y "$pkg"
   fi
 done
+
+echo  ==============================
+echo  emacs-nox を特別扱いでインストール
+echo  ==============================
+
+if ! dpkg -s emacs-nox >/dev/null 2>&1; then
+  echo "[INFO] Pre-setting debconf to avoid postfix interaction"
+  echo "postfix postfix/main_mailer_type string No configuration" | sudo debconf-set-selections
+
+  echo "[INFO] Installing emacs-nox with debconf pre-seeded"
+  sudo DEBIAN_FRONTEND=noninteractive apt-get install -y emacs-nox
+else
+  echo "[INFO] emacs-nox is already installed."
+fi
 
 echo -------------------
 echo ロケールと言語設定
