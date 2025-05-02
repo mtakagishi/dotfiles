@@ -38,7 +38,7 @@ jobs:
 
       - name: Step-3 install.sh
         run: |
-          sudo -u testuser bash <<'EOF'
+          sudo --preserve-env=CI -u testuser bash <<'EOF'
             set -euxo pipefail
             # 3) install.sh の実行（ファイル存在確認付き）
             if [ -f "$HOME/.config/bootstrap/install.sh" ]; then
