@@ -19,6 +19,8 @@ git clone --bare https://github.com/mtakagishi/dotfiles.git $HOME/.dotfiles \
 config --local status.showUntrackedFiles no
 ``` 
 
+checkout時にファイルが存在する場合は該当ファイルを手動で削除して再実行
+
 3. run instal.sh
 
 ``` bash
