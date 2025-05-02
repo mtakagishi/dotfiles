@@ -57,6 +57,7 @@ Thumbs.db
 !README.md
 !.config/bootstrap/install.sh
 !.github/workflows/setup-test.yml
+!.config/nvim/init.vim
 
 ############################
 # 7. Catch-all (何もマッチしなかった大きなディレクトリは未追跡)
@@ -75,4 +76,5 @@ Thumbs.db
 .sudo_as_admin_successful
 .dotfiles/*
 .zcompdump
-
+install.log
+.nvimlog
