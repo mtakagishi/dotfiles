@@ -14,12 +14,12 @@ sudo apt update -y && sudo apt install -y git curl vim
 
 ``` bash
 git clone --bare https://github.com/mtakagishi/dotfiles.git $HOME/.dotfiles \
-&& git --git-dir=$HOME/.dotfiles --work-tree=$HOME checkout \
+&& git --git-dir=$HOME/.dotfiles --work-tree=$HOME checkout --force\
 && git --git-dir=$HOME/.dotfiles --work-tree=$HOME \
 config --local status.showUntrackedFiles no
 ``` 
 
-checkout時にファイルが存在する場合は該当ファイルを手動で削除して再実行
+checkout時にファイルが存在する場合は上書き。バックアップが必要なら --forceを付けずに実行してください。
 
 3. run instal.sh
 
