@@ -21,7 +21,7 @@ config --local status.showUntrackedFiles no
 
 checkout時にファイルが存在する場合は上書き。バックアップが必要なら --forceを付けずに実行してください。
 
-3. run instal.sh
+3. run install.sh
 
 ``` bash
 bash ~/.config/bootstrap/install.sh
