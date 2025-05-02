@@ -141,10 +141,11 @@ echo ---------
 ZSH_PATH="$(command -v zsh)"
 CURRENT_SHELL="$(getent passwd "$USER" | cut -d: -f7)"
 
-if [[ "$CURRENT_SHELL" == "$ZSH_PATH" ]]; then
+if [[ -n "${CI:-}" ]]; then
+  echo "[INFO] CI環境なので chsh をスキップします。"
+elif [[ "$CURRENT_SHELL" == "$ZSH_PATH" ]]; then
   echo "[INFO] Login shell is already zsh ($CURRENT_SHELL). Skipping chsh."
 else
   echo "[INFO] Changing login shell to zsh..."
   chsh -s "$ZSH_PATH"
 fi
-
