@@ -80,3 +80,7 @@ Thumbs.db
 install.log
 .nvimlog
 .emacs.d/eln-cache/
+.config/github-copilot/apps.json
+.config/github-copilot/versions.json
+.nvm/
+

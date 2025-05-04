@@ -1,4 +1,4 @@
-![Dotfiles Setup](https://github.com/mtakagishi/dotfiles/actions/workflows/dotfiles-ci.yml/badge.svg)
+[![Dotfiles Setup](https://github.com/mtakagishi/dotfiles/actions/workflows/dotfiles-ci.yml/badge.svg)](https://github.com/mtakagishi/dotfiles/actions/workflows/dotfiles-ci.yml)
 
 # dotfiles
 

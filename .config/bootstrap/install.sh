@@ -149,3 +149,48 @@ else
   echo "[INFO] Changing login shell to zsh..."
   chsh -s "$ZSH_PATH"
 fi
+
+# ----------------------------------------
+# Node.js セットアップ via nvm
+# ----------------------------------------
+
+# NVMのインストール先ディレクトリ
+export NVM_DIR="$HOME/.nvm"
+
+# nvm がすでに存在しているかチェック
+if [ ! -s "$NVM_DIR/nvm.sh" ]; then
+  echo "[INFO] Installing NVM..."
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+else
+  echo "[INFO] NVM already installed. Skipping."
+fi
+
+# nvm を現在のシェルで有効化
+if [ -s "$NVM_DIR/nvm.sh" ]; then
+  . "$NVM_DIR/nvm.sh"
+fi
+
+# Node.js がインストールされていない場合は LTS 版を導入
+if ! command -v node >/dev/null; then
+  echo "[INFO] Installing Node.js via nvm..."
+  nvm install --lts
+else
+  echo "[INFO] Node.js is already available. Version: $(node -v)"
+fi
+
+
+# vim-plug をインストール（Neovim 用）
+if [ ! -f "$HOME/.local/share/nvim/site/autoload/plug.vim" ]; then
+  echo "[INFO] Installing vim-plug for Neovim..."
+  curl -fLo "$HOME/.local/share/nvim/site/autoload/plug.vim" --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+else
+  echo "[INFO] vim-plug already installed. Skipping."
+fi
+
+if [ -d "$HOME/.config/nvim" ]; then
+  echo "[INFO] Running :PlugInstall for Neovim..."
+  nvim --headless +PlugInstall +PlugUpdate +PlugClean! +qall
+  echo "[INFO] To enable GitHub Copilot, open Neovim and run :Copilot setup (only once)"
+fi
+

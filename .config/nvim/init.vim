@@ -18,3 +18,22 @@ colorscheme default
 
 " --- ファイル保存時の自動処理（例：トレーリングスペース削除） ---
 autocmd BufWritePre * :%s/\\s\\+$//e
+
+" --- キーマッピング ---
+
+" --- プラグイン定義 (vim-plug)---
+call plug#begin('~/.local/share/nvim/plugged')
+
+" --- 追加プラグイン---
+
+" github copilot
+Plug 'github/copilot.vim'
+
+call plug#end()
+
+" --- プラグインの設定 ---
+" Copilot の Tab キーを無効化（他プラグインと衝突させない）
+let g:copilot_no_tab_map = v:true
+
+" Copilot の補完を <C-J>（Ctrl+J）で受け入れる
+imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
