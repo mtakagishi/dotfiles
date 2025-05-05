@@ -84,3 +84,5 @@ install.log
 .config/github-copilot/versions.json
 .nvm/
 dev/
+.local/bin/
+.python_history

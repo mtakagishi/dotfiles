@@ -28,6 +28,7 @@ packages=(
   unzip
   neovim
   tmux
+  pipx
   # emacs-nox
 )
 
@@ -151,9 +152,9 @@ else
   chsh -s "$ZSH_PATH"
 fi
 
-# ----------------------------------------
-# Node.js セットアップ via nvm
-# ----------------------------------------
+echo ----------------------------------------
+echo Node.js セットアップ via nvm
+echo ----------------------------------------
 
 # NVMのインストール先ディレクトリ
 export NVM_DIR="$HOME/.nvm"
@@ -179,8 +180,9 @@ else
   echo "[INFO] Node.js is already available. Version: $(node -v)"
 fi
 
-
-# vim-plug をインストール（Neovim 用）
+echo ------------------------------------
+echo vim-plug をインストール（Neovim 用）
+echo ------------------------------------
 if [ ! -f "$HOME/.local/share/nvim/site/autoload/plug.vim" ]; then
   echo "[INFO] Installing vim-plug for Neovim..."
   curl -fLo "$HOME/.local/share/nvim/site/autoload/plug.vim" --create-dirs \
@@ -195,3 +197,18 @@ if [ -d "$HOME/.config/nvim" ]; then
   echo "[INFO] To enable GitHub Copilot, open Neovim and run :Copilot setup (only once)"
 fi
 
+echo --------------------------
+echo python環境整備
+echo --------------------------
+export PATH="$HOME/.local/bin:$PATH"
+
+# poetry インストール（pipx 経由）
+if ! command -v poetry >/dev/null; then
+  echo "[INFO] Installing poetry via pipx..."
+  pipx install poetry
+fi
+
+# 確認出力
+python3 --version
+pipx --version
+poetry --version

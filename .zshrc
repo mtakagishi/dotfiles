@@ -42,6 +42,7 @@ compinit
 export SUDO_EDITOR=nvim
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+export PATH="$HOME/.local/bin:$PATH"
 
 # alias
 alias dot='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
