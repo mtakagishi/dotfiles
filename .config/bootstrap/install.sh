@@ -27,6 +27,7 @@ packages=(
   fontconfig
   unzip
   neovim
+  tmux
   # emacs-nox
 )
 

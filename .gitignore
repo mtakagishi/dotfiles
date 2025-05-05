@@ -83,4 +83,4 @@ install.log
 .config/github-copilot/apps.json
 .config/github-copilot/versions.json
 .nvm/
-
+dev/
