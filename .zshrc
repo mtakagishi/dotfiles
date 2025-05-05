@@ -1,3 +1,5 @@
+# Windows規定値対策
+cd ~
 # --- ヒストリ設定 ---
 HISTFILE=~/.zsh_history
 HISTSIZE=1000
