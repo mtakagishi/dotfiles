@@ -185,11 +185,13 @@ echo "vim-plug をインストール（Neovim 用）"
 echo "------------------------------------"
 
 # XDG Base Directory に対応（必要に応じて）
-export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
-export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
 
 echo XDG_CONFIG_HOME: "$XDG_CONFIG_HOME"
 echo XDG_DATA_HOME: "$XDG_DATA_HOME"
+echo XDG_CACHE_HOME: "$XDG_CACHE_HOME"
 
 # 必要なディレクトリを作成
 mkdir -p "$XDG_DATA_HOME/nvim/site/autoload"
