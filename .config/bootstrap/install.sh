@@ -256,7 +256,7 @@ packages=(
 )
 
 echo ----------------------------------------
-echo piex各パッケージが未インストールならインストール
+echo pipx各パッケージが未インストールならインストール
 echo ----------------------------------------
 for pkg in "${packages[@]}"; do
     if pipx list | grep -q "$pkg"; then
