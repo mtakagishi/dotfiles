@@ -196,15 +196,18 @@ else
   echo "[INFO] vim-plug already installed. Skipping."
 fi
 
-echo --------------------------
-nvim --headless +scriptnames +qall
-
 # if [ -d "$HOME/.config/nvim" ]; then
 if grep -q 'plug#begin' "$HOME/.config/nvim/init.vim" 2>/dev/null; then
   echo "[INFO] Running :PlugInstall for Neovim..."
   nvim --headless  -u "$HOME/.config/nvim/init.vim" +PlugInstall +PlugUpdate +PlugClean! +qall
   echo "[INFO] To enable GitHub Copilot, open Neovim and run :Copilot setup (only once)"
 fi
+
+echo --------------------------
+echo Neovim プラグイン確認
+echo --------------------------
+nvim --headless +scriptnames +qall
+
 
 echo --------------------------
 echo python環境整備
