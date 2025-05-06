@@ -245,4 +245,24 @@ fi
 # 確認出力
 python3 --version
 pipx --version
-poetry --version
+
+echo -------------------------------------
+echo pipx install するパッケージを追加
+echo -------------------------------------
+# pipxインストール対象のパッケージ一覧
+packages=(
+    poetry
+    pre-commit
+)
+
+echo ----------------------------------------
+echo piex各パッケージが未インストールならインストール
+echo ----------------------------------------
+for pkg in "${packages[@]}"; do
+    if pipx list | grep -q "$pkg"; then
+        echo "[INFO] $pkg is already installed."
+    else
+        echo "[INFO] Installing $pkg..."
+        pipx install "$pkg"
+    fi
+done
