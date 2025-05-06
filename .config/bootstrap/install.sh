@@ -180,32 +180,42 @@ else
   echo "[INFO] Node.js is already available. Version: $(node -v)"
 fi
 
-echo ------------------------------------
-echo vim-plug をインストール（Neovim 用）
-echo ------------------------------------
+echo "------------------------------------"
+echo "vim-plug をインストール（Neovim 用）"
+echo "------------------------------------"
 
-# 必要なディレクトリを明示的に作成
-mkdir -p "$HOME/.local/share/nvim/site/autoload"
-mkdir -p "$HOME/.local/share/nvim/plugged"
+# XDG Base Directory に対応（必要に応じて）
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
 
-if [ ! -f "$HOME/.local/share/nvim/site/autoload/plug.vim" ]; then
+# 必要なディレクトリを作成
+mkdir -p "$XDG_DATA_HOME/nvim/site/autoload"
+mkdir -p "$XDG_DATA_HOME/nvim/plugged"
+
+# vim-plug をインストール（未インストール時のみ）
+if [ ! -f "$XDG_DATA_HOME/nvim/site/autoload/plug.vim" ]; then
   echo "[INFO] Installing vim-plug for Neovim..."
-  curl -fLo "$HOME/.local/share/nvim/site/autoload/plug.vim" --create-dirs \
+  curl -fLo "$XDG_DATA_HOME/nvim/site/autoload/plug.vim" --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 else
   echo "[INFO] vim-plug already installed. Skipping."
 fi
 
-# if [ -d "$HOME/.config/nvim" ]; then
-if grep -q 'plug#begin' "$HOME/.config/nvim/init.vim" 2>/dev/null; then
+# init.vim に plug#begin が含まれている場合のみ実行
+INIT_VIM="$XDG_CONFIG_HOME/nvim/init.vim"
+if grep -q 'plug#begin' "$INIT_VIM" 2>/dev/null; then
   echo "[INFO] Running :PlugInstall for Neovim..."
-  nvim --headless  -u "$HOME/.config/nvim/init.vim" +PlugInstall +PlugUpdate +PlugClean! +qall
-  echo --------------------------
-  echo Neovim プラグイン確認
-  echo --------------------------
-  nvim --headless -u "$HOME/.config/nvim/init.vim" +scriptnames +qall
-  echo --------------------------
+  nvim --headless -u "$INIT_VIM" +PlugInstall +PlugUpdate +PlugClean! +qall
+
+  echo "--------------------------"
+  echo "Neovim プラグイン確認"
+  echo "--------------------------"
+  nvim --headless -u "$INIT_VIM" +scriptnames +qall
+
+  echo "--------------------------"
   echo "[INFO] To enable GitHub Copilot, open Neovim and run :Copilot setup (only once)"
+else
+  echo "[WARN] plug#begin not found in $INIT_VIM — skipping PlugInstall."
 fi
 
 echo --------------------------
