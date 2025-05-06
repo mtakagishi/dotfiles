@@ -206,7 +206,7 @@ fi
 echo --------------------------
 echo Neovim プラグイン確認
 echo --------------------------
-nvim --headless +scriptnames +qall
+nvim --headless -u "$HOME/.config/nvim/init.vim" +scriptnames +qall
 
 
 echo --------------------------
