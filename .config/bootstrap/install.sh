@@ -196,6 +196,9 @@ else
   echo "[INFO] vim-plug already installed. Skipping."
 fi
 
+echo --------------------------
+nvim --headless +scriptnames +qall
+
 # if [ -d "$HOME/.config/nvim" ]; then
 if grep -q 'plug#begin' "$HOME/.config/nvim/init.vim" 2>/dev/null; then
   echo "[INFO] Running :PlugInstall for Neovim..."
