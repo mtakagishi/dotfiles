@@ -183,6 +183,11 @@ fi
 echo ------------------------------------
 echo vim-plug をインストール（Neovim 用）
 echo ------------------------------------
+
+# 必要なディレクトリを明示的に作成
+mkdir -p "$HOME/.local/share/nvim/site/autoload"
+mkdir -p "$HOME/.local/share/nvim/plugged"
+
 if [ ! -f "$HOME/.local/share/nvim/site/autoload/plug.vim" ]; then
   echo "[INFO] Installing vim-plug for Neovim..."
   curl -fLo "$HOME/.local/share/nvim/site/autoload/plug.vim" --create-dirs \
