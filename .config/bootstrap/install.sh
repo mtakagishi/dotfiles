@@ -191,7 +191,8 @@ else
   echo "[INFO] vim-plug already installed. Skipping."
 fi
 
-if [ -d "$HOME/.config/nvim" ]; then
+# if [ -d "$HOME/.config/nvim" ]; then
+if grep -q 'plug#begin' "$HOME/.config/nvim/init.vim" 2>/dev/null; then
   echo "[INFO] Running :PlugInstall for Neovim..."
   nvim --headless +PlugInstall +PlugUpdate +PlugClean! +qall
   echo "[INFO] To enable GitHub Copilot, open Neovim and run :Copilot setup (only once)"
@@ -200,12 +201,20 @@ fi
 echo --------------------------
 echo python環境整備
 echo --------------------------
+pipx ensurepath
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="/opt/pipx_bin:$PATH"
 
 # poetry インストール（pipx 経由）
 if ! command -v poetry >/dev/null; then
   echo "[INFO] Installing poetry via pipx..."
   pipx install poetry
+fi
+
+# 念のため再確認してもまだ poetry が無い場合
+if ! command -v poetry >/dev/null; then
+  echo "[ERROR] poetry が PATH に見つかりません。環境を確認してください。" >&2
+  exit 127
 fi
 
 # 確認出力
