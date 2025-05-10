@@ -51,6 +51,32 @@ alias vim='nvim'
 alias view='nvim -R'
 alias vimdiff='nvim -d'
 
+# プラグイン用のディレクトリ
+ZSH_PLUGIN_DIR="$HOME/.zsh/plugins"
+mkdir -p "$ZSH_PLUGIN_DIR"
+
+# インストール関数
+install_zsh_plugin() {
+  local name=$1
+  local url=$2
+  local dir="$ZSH_PLUGIN_DIR/$name"
+  if [ ! -d "$dir" ]; then
+    echo "[INFO] Installing $name ..."
+    git clone --depth=1 "$url" "$dir"
+  fi
+}
+
+# 必須プラグインのチェックとインストール
+install_zsh_plugin "zsh-autosuggestions" "https://github.com/zsh-users/zsh-autosuggestions"
+install_zsh_plugin "zsh-syntax-highlighting" "https://github.com/zsh-users/zsh-syntax-highlighting"
+install_zsh_plugin "zsh-completions" "https://github.com/zsh-users/zsh-completions"
+
+
 # --- starship 初期化 -----------------------------------------------
 eval "$(starship init zsh)"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# プラグイン読み込み（順序に注意）
+source "$ZSH_PLUGIN_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "$ZSH_PLUGIN_DIR/zsh-completions/zsh-completions.plugin.zsh"
+source "$ZSH_PLUGIN_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
