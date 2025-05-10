@@ -152,6 +152,16 @@ else
   chsh -s "$ZSH_PATH"
 fi
 
+echo --------------------------
+echo starship のインストール
+echo --------------------------
+if ! command -v starship &>/dev/null; then
+  echo "[INFO] Installing starship..."
+  curl -sS https://starship.rs/install.sh | sh -s -- -y
+else
+  echo "[INFO] starship already installed."
+fi
+
 echo ----------------------------------------
 echo Node.js セットアップ via nvm
 echo ----------------------------------------
