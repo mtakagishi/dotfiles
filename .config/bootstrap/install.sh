@@ -111,8 +111,14 @@ echo --------------------------------------------------
 if sudo ufw status | grep -q "OpenSSH"; then
   echo "[INFO] OpenSSH is already allowed."
 else
-  echo "[INFO] Allowing OpenSSH through ufw..."
-  sudo ufw allow OpenSSH
+  echo "[INFO] Checking if 'OpenSSH' profile is available..."
+  if sudo ufw app list | grep -q "^  OpenSSH$"; then
+    echo "[INFO] Allowing 'OpenSSH' through ufw..."
+    sudo ufw allow OpenSSH
+  else
+    echo "[WARN] 'OpenSSH' profile not found. Allowing port 22/tcp instead..."
+    sudo ufw allow 22/tcp
+  fi
 fi
 
 echo ------------
