@@ -24,10 +24,8 @@ autocmd BufWritePre * :%s/\\s\\+$//e
 " --- プラグイン定義 (vim-plug)---
 call plug#begin('~/.local/share/nvim/plugged')
 
-" --- 追加プラグイン---
-
-" github copilot
 Plug 'github/copilot.vim'
+Plug 'numToStr/Comment.nvim'
 
 call plug#end()
 
@@ -37,3 +35,9 @@ let g:copilot_no_tab_map = v:true
 
 " Copilot の補完を <C-J>（Ctrl+J）で受け入れる
 imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+
+" Luaプラグインの初期化
+lua << EOF
+require('Comment').setup()
+EOF
+
