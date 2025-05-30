@@ -59,6 +59,21 @@ else
   echo "[INFO] emacs-nox is already installed."
 fi
 
+echo "----------------------------"
+echo "Setting up Python environment with Rye"
+echo "----------------------------"
+
+# RYE_HOMEを指定（必要に応じてカスタマイズ）
+export RYE_HOME="$HOME/.rye"
+
+# すでにインストールされているか確認
+if [ -x "$RYE_HOME/shims/rye" ]; then
+    echo "[INFO] Rye is already installed."
+else
+    echo "[INFO] Installing Rye..."
+    curl -sSf https://rye-up.com/get | RYE_INSTALL_OPTION="--yes" bash
+fi
+
 echo -------------------
 echo ロケールと言語設定
 echo -------------------
@@ -282,3 +297,4 @@ for pkg in "${packages[@]}"; do
         pipx install "$pkg"
     fi
 done
+

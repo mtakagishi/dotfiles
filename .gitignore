@@ -87,3 +87,4 @@ dev/
 .local/bin/
 .python_history
 .zsh/plugins/
+.rye/

@@ -44,6 +44,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 export PATH="$HOME/.local/bin:$PATH"
 
+# ryeの設定
+. "$HOME/.rye/env"
+
 # alias
 alias dot='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias dotcheck='dot status --untracked-files=all'
