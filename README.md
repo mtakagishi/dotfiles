@@ -26,3 +26,7 @@ checkout時にファイルが存在する場合は上書き。バックアップ
 ``` bash
 bash ~/.config/bootstrap/install.sh
 ```
+
+## Note
+- github actionsでCIを実行しています。プルリクエストを作成すると、CIが自動で実行されます。 
+- CIは60日以上更新されていない場合は自動で停止します。その場合は手動でEnableしてください。
